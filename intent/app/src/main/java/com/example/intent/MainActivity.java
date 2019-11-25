@@ -19,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         et_test = findViewById(R.id.et_test);
-        str = et_test.getText().toString();
+
 
         btn_move = findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                str = et_test.getText().toString();
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
                 intent.putExtra("str", str);
                 startActivity(intent);
