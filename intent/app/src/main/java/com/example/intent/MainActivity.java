@@ -3,6 +3,7 @@ package com.example.intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,13 +23,16 @@ public class MainActivity extends AppCompatActivity {
     private String str;
     private ImageView test;
     private ListView list;
+    private String shared = "file";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         et_test = findViewById(R.id.et_test);
-
+        SharedPreferences sharedPreferences = getSharedPreferences(shared, 0);
+        String value = sharedPreferences.getString("values","");
+        et_test.setText(value);
 
         btn_move = findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +62,15 @@ public class MainActivity extends AppCompatActivity {
 
         data.add("data1");
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences = getSharedPreferences(shared, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String value = et_test.getText().toString();
+        editor.putString("values", value);
+        editor.commit();
     }
 };
