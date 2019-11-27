@@ -722,6 +722,7 @@ id italic
 id left
 id line1
 id line3
+id list
 id listMode
 id list_item
 id message
