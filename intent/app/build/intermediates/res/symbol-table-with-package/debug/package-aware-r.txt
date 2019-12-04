@@ -678,7 +678,6 @@ id barrier
 id beginning
 id blocking
 id bottom
-id btn_move
 id buttonPanel
 id center
 id center_horizontal
@@ -700,7 +699,6 @@ id direct
 id disableHome
 id edit_query
 id end
-id et_test
 id expand_activities_button
 id expanded_menu
 id fill
@@ -722,7 +720,6 @@ id italic
 id left
 id line1
 id line3
-id list
 id listMode
 id list_item
 id message
@@ -778,7 +775,6 @@ id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
-id test
 id text
 id text2
 id textSpacerNoButtons
@@ -793,6 +789,7 @@ id tv_sub
 id uniform
 id up
 id useLogo
+id wevView
 id withText
 id wrap
 id wrap_content

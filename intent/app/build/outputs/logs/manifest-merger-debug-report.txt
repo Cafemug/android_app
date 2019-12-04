@@ -48,6 +48,10 @@ INJECTED from D:\git\android_app\intent\app\src\main\AndroidManifest.xml:2:1-22:
 		INJECTED from D:\git\android_app\intent\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\git\android_app\intent\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\git\android_app\intent\app\src\main\AndroidManifest.xml:4:5-66
+	android:name
+		ADDED from D:\git\android_app\intent\app\src\main\AndroidManifest.xml:4:22-64
 application
 ADDED from D:\git\android_app\intent\app\src\main\AndroidManifest.xml:5:5-20:19
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\gabin\.gradle\caches\transforms-2\files-2.1\508ac768b50158a079142e4dc4915061\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
