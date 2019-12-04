@@ -1,11 +1,14 @@
 package com.example.intent;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -30,16 +33,41 @@ public class MainActivity extends AppCompatActivity {
     private String shared = "file";
     private WebView webView;
     private String url = "https://www.naver.com";
+
+    private View drawerView;
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        webView = (WebView)findViewById(R.id.wevView);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url);
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.setWebViewClient(new WebViewClientClass());
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerView = (View)findViewById(R.id.drawer);
+        Button btn_open = (Button)findViewById(R.id.btn_open);
+        btn_open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(drawerView);
+            }
+        });
+        drawerLayout.setDrawerListener(listener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+        Button btn_close = (Button)findViewById(R.id.btn_close);
+        btn_open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawers();
+            }
+        });
+//        webView = (WebView)findViewById(R.id.wevView);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.loadUrl(url);
+//        webView.setWebChromeClient(new WebChromeClient());
+//        webView.setWebViewClient(new WebViewClientClass());
 //
 //        et_test = findViewById(R.id.et_test);
 //        SharedPreferences sharedPreferences = getSharedPreferences(shared, 0);
@@ -75,15 +103,15 @@ public class MainActivity extends AppCompatActivity {
 //        data.add("data1");
 //        adapter.notifyDataSetChanged();
     }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
-            webView.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
+//            webView.goBack();
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
     @Override
     protected void onDestroy() {
@@ -95,11 +123,32 @@ public class MainActivity extends AppCompatActivity {
 //        editor.commit();
     }
 
-    private class WebViewClientClass extends WebViewClient {
+//    private class WebViewClientClass extends WebViewClient {
+//        @Override
+//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//            view.loadUrl(url);
+//            return true;
+//        }
+//    }
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
         }
-    }
+
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+
+        }
+
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+
+        }
+
+        @Override
+        public void onDrawerStateChanged(int newState) {
+
+        }
+    };
 };
